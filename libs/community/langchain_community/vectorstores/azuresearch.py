@@ -400,8 +400,9 @@ class AzureSearch(VectorStore):
             bool: True if deletion is successful,
             False otherwise.
         """
+        # Assuming FIELDS_ID is defined at the class level or imported
         if ids:
-            res = self.client.delete_documents([{"id": i} for i in ids])
+            res = self.client.delete_documents([{self.FIELDS_ID: i} for i in ids])
             return len(res) > 0
         else:
             return False
